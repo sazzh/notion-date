@@ -38,15 +38,16 @@ body{
     
     var today = new Date();
     var hrs = today.getHours();
+    var current_time = date.getHours()+":"+date.getMinutes()+":"+ date.getSeconds();
     var dayOfWeek = weekday[today.getDay()];
-    var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear() + hrs ;
+    var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear() + '/' +current_time ;
 
     var greet;
 
     if (hrs < 12)
         greet = 'Good Morning  ';
     else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon !!!!';
+        greet = 'Good Afternoon  ';
     else if (hrs >= 17 && hrs <= 24)
         greet = 'Good Evening  ';
 
