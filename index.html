@@ -2,9 +2,12 @@
 <html> 
 <head>
     <title>Greeting Message</title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Nanum+Pen+Script&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
     <style>
 #lbl {
-    font-family: monospace;
+    font-family: 'Jost', sans-serif;
     font-size: xx-large;
     color: #626262;
     padding: 5px;
@@ -17,12 +20,19 @@
 #date{
     font-size:large;
 }
-body{
+
+#greet {
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 42px;
+    height: 20%;
 }
+
     </style>
 </head>
 <body>
-    <div id="lbl"></div>
+    <div id="lbl">
+        <span id="greet"></span>
+    </div>
 </body>
 
 <script>
@@ -43,7 +53,7 @@ body{
     hour: '2-digit',
     minute: '2-digit',
     });
-    var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear() + currentTime ;
+    var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear()  ;
 
     var greet;
 
@@ -54,7 +64,7 @@ body{
     else if (hrs >= 17 && hrs <= 24)
         greet = 'Good Evening  ';
 
-    document.getElementById('lbl').innerHTML =
-        greet+=`<div id="date"> It's ${date}</div>`;
+    document.getElementById('greet').innerHTML = greet;
+    document.getElementById('lbl').innerHTML += `<div id="date"> It's ${date} <br> The time is ${currentTime} </div>`;
 </script> 
 </html>
