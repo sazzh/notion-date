@@ -38,8 +38,11 @@ body{
     
     var today = new Date();
     var hrs = today.getHours();
-    var currentTime = today.getHours()+":"+today.getMinutes()+":"+ today.getSeconds();
     var dayOfWeek = weekday[today.getDay()];
+    let currentTime = today.toLocaleTimeString('en-AU', {
+    hour: '2-digit',
+    minute: '2-digit',
+    });
     var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear() + currentTime ;
 
     var greet;
