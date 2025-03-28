@@ -73,7 +73,13 @@
         greet = 'Good Evening  ';
 
     if (dayOfWeek === 'Monday')
-        showAir = 'No show today';
+        showAir = 'No Show Today';
+    else if (hrs >= 18 && hrs <= 21)
+        showAir = 'Show is currently airing~';
+    else if (hrs < 18 && hrs >= 1)
+        showAir = 'Show hasn&#39;t started yet!';
+    else if (hrs > 21 && hrs <= 24)
+        showAir = 'The show is over for tonight';
     else
         showAir = 'There&#39;s a show on today!';
 
