@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300&family=Nanum+Pen+Script&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
     <style>
+
 #lbl {
     font-family: 'Jost', sans-serif;
     font-size: xx-large;
@@ -17,6 +18,7 @@
     height:85%
 
 }
+
 #date{
     font-size:large;
 }
@@ -27,12 +29,17 @@
     height: 20%;
 }
 
+#showAir {
+    font-size: 25px;
+}
+
     </style>
 </head>
 <body>
     <div id="lbl">
         <span id="greet"></span>
     </div>
+
 </body>
 
 <script>
@@ -56,7 +63,7 @@
     var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear()  ;
 
     var greet;
-    var show;
+    var showAir;
 
     if (hrs < 12)
         greet = 'Good Morning  ';
@@ -65,13 +72,12 @@
     else if (hrs >= 17 && hrs <= 24)
         greet = 'Good Evening  ';
 
-    if (dayOfWeek == 'Monday') 
-        show = 'No show today';
-    else 
-        show = 'There&#39;s a show on today!';
+    if (dayOfWeek === 'Monday')
+        showAir = 'No show today';
+    else
+        showAir = 'There&#39;s a show on today!';
 
     document.getElementById('greet').innerHTML = greet;
-    document.getElementById('lbl').innerHTML += `<div id="date"> It's ${date} <br> The time is ${currentTime} </div>`;
-    document.getElementById('show').innerHTML = show;
-</script> 
+    document.getElementById('lbl').innerHTML += `<div id="date"> It's ${date} <br> The time is ${currentTime} </div><span id="showAir">${showAir}</span>`;
+</script>
 </html>
