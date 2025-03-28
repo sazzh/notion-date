@@ -16,7 +16,6 @@
     text-align: center;
     line-height: 1.5;
     height:85%
-
 }
 
 #date{
@@ -52,7 +51,6 @@
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
 
-    
     var today = new Date();
     var hrs = today.getHours();
     var dayOfWeek = weekday[today.getDay()];
@@ -72,16 +70,34 @@
     else if (hrs >= 17 && hrs <= 24)
         greet = 'Good Evening  ';
 
-    if (dayOfWeek === 'Monday')
-        showAir = 'No Show Today';
-    else if (hrs >= 18 && hrs <= 21)
-        showAir = 'Show is currently airing~';
-    else if (hrs < 18 && hrs >= 1)
-        showAir = 'Show hasn&#39;t started yet!';
-    else if (hrs > 21 && hrs <= 24)
-        showAir = 'The show is over for tonight';
-    else
-        showAir = 'There&#39;s a show on today!';
+    //for simplicity not using minutes
+    showSchedule = {
+        Sunday: { showStart: 16, showEnd: 18},
+        Monday: null,
+        Tuesday: { showStart: 19, showEnd: 20},
+        Wednesday: { showStart: 18, showEnd: 19},
+        Thursday: { showStart: 19, showEnd: 21},
+        Friday: { showStart: 18, showEnd: 19},
+        Saturday: { showStart: 16, showEnd: 17}
+    }
+
+    switch (dayOfWeek) {
+        case 'Monday':
+            showAir = 'No Show Today';
+            break;
+        default:
+            schedule = showSchedule[dayOfWeek];
+            if (schedule)
+                if (hrs >= schedule.showStart && hrs <= schedule.showEnd)
+                    showAir = 'Show is currently airing~';
+                else if (hrs < schedule.showStart)
+                    showAir = 'Show hasn&#39;t started yet!';
+                else if (hrs > schedule.showEnd)
+                    showAir = 'The show is over for tonight';
+            else
+                showAir = 'There is a show on tonight!';
+            break;
+    }
 
     document.getElementById('greet').innerHTML = greet;
     document.getElementById('lbl').innerHTML += `<div id="date"> It's ${date} <br> The time is ${currentTime} </div><span id="showAir">${showAir}</span>`;
